@@ -28,12 +28,13 @@ void handle_file(char *file_read)
 		if (strcmp(command, "queue") == 0)
 		{
 			is_stack = 0;
+			free(buffer);
 			continue;
 		}
 		arg = strtok(NULL, " ");
-		choose_func(command, arg, line, is_stack);
+		free(buffer);
+		choose_func(command, arg, line, is_stack, fp);
         }
-	free(buffer);
 	fclose(fp);
 }
 
@@ -52,7 +53,7 @@ void handle_file(char *file_read)
  *
 */
 
-void choose_func(char *command, char *arg, int line, int is_stack)
+void choose_func(char *command, char *arg, int line, int is_stack, FILE *fp)
 {
 	if (strcmp(command, "push") == 0 && is_stack == 1)
 		add_stack_node(arg, line);
@@ -62,6 +63,7 @@ void choose_func(char *command, char *arg, int line, int is_stack)
 		print_nodes();
 	else
 	{
+		fclose(fp);
 		free_list(head);
 		fprintf(stderr, "L %d:  unknown instruction %s\n", line, command);
 		exit (EXIT_FAILURE);

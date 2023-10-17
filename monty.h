@@ -41,7 +41,7 @@ typedef struct instruction_s
 extern stack_t *head;
 
 void handle_file(char *file_read);
-void choose_func(char *command, char *arg, int line, int is_stack);
+void choose_func(char *command, char *arg, int line, int is_stack, FILE *fp);
 void print_nodes(void);
 void add_queue_node(char *arg, int line);
 void add_stack_node(char *arg, int line);
