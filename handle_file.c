@@ -29,11 +29,12 @@ void handle_file(char *file_read)
 		if (strcmp(command, "queue") == 0)
 		{
 			is_stack = 0;
-			free(buffer);
 			continue;
 		}
-		arg = strtok(NULL, " ");
-		error = choose_func(command, arg, line, is_stack, fp);
+		else if (strcmp(command, "stack") == 0)
+			continue;
+		arg = strtok(NULL, " \n");
+		error = choose_func(command, arg, line, is_stack);
 		if (error == -1)
 			break;
         }
@@ -61,12 +62,12 @@ void handle_file(char *file_read)
  *
 */
 
-int choose_func(char *command, char *arg, int line, int is_stack, FILE *fp)
+int choose_func(char *command, char *arg, int line, int is_stack)
 {
 	if (strcmp(command, "push") == 0 && is_stack == 1)
 		return (add_stack_node(arg, line));
 	else if (strcmp(command, "push") == 0 && is_stack == 0)
-		add_queue_node(arg, line, fp);
+		return (add_queue_node(arg, line));
 	else if (strcmp(command, "pall") == 0)
 		return (print_nodes());
 	else
