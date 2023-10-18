@@ -16,7 +16,7 @@ void handle_file(char *file_read)
 	int line, is_stack = 1, error;
 
 	fp = fopen(file_read, "r");
-	if (fp == NULL)
+	if (fp == NULL || file_read == NULL)
 	{
 		if (head != NULL)
 			free_list(head);
