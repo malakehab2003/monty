@@ -61,6 +61,10 @@ int is_int(const char *string)
 
 	for (i = 0; string[i] != '\0'; i++)
 	{
+		if (string[i] == '-')
+		{
+			continue;
+		}
 		if (!isdigit(string[i]))
 		{
 			return (0);
