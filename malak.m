@@ -1,2 +1,2 @@
-push 1a
+pusah 1a
 pall

@@ -24,7 +24,7 @@ int add_queue_node(char *arg, int line)
 	check_int = is_int(arg);
 	if (arg == NULL || check_int == 0)
 	{
-		free (new);
+		free(new);
 		fprintf(stderr, "L%d: usage: push integer\n", line);
 		return (-1);
 	}
