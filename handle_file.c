@@ -72,7 +72,7 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 		return (print_nodes());
 	else
 	{
-		fprintf(stderr, "L %d:  unknown instruction %s\n", line, command);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line, command);
 		return (-1);
 	}
 	return (0);

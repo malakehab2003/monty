@@ -27,7 +27,7 @@ int add_stack_node(char *arg, int line)
 	if (arg == NULL || check_int == 0)
 	{
 		free (new);
-		fprintf(stderr, "L %d: usage: push integer\n", line);
+		fprintf(stderr, "L%d: usage: push integer\n", line);
 		return (-1);
 	}
 	arg_int = atoi(arg);
