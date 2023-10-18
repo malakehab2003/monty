@@ -72,6 +72,8 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 		return (print_nodes());
 	else if (strcmp(command, "pint") == 0)
 		return (print_head(line));
+	else if (strcmp(command, "pop") == 0)
+		return (pop_node(line));
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, command);
 	return (-1);
 }
