@@ -70,6 +70,8 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 		return (add_queue_node(arg, line));
 	else if (strcmp(command, "pall") == 0)
 		return (print_nodes());
+	else if (strcmp(command, "pint") == 0)
+		return (print_head(line));
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, command);
 	return (-1);
 }

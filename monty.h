@@ -47,5 +47,6 @@ int add_queue_node(char *arg, int line);
 int add_stack_node(char *arg, int line);
 int is_int(const char *string);
 void free_list(stack_t *head);
+int print_head(int line);
 
 #endif
