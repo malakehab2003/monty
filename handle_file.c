@@ -13,12 +13,13 @@ void handle_file(char *file_read)
         FILE *fp;
         char *buffer = NULL, *command, *arg;
         size_t size = 0;
-        int line, is_stack = 1;
+        int line, is_stack = 1, error;
 
         fp = fopen(file_read, "r");
         if (fp == NULL)
         {
-		free_list(head);
+		if (head != NULL)
+			free_list(head);
                 fprintf(stderr, "Error: Can't open file %s\n", file_read);
                 exit (EXIT_FAILURE);
         }
@@ -32,10 +33,17 @@ void handle_file(char *file_read)
 			continue;
 		}
 		arg = strtok(NULL, " ");
-		free(buffer);
-		choose_func(command, arg, line, is_stack, fp);
+		error = choose_func(command, arg, line, is_stack, fp);
+		if (error == -1)
+			break;
         }
+	free(buffer);
 	fclose(fp);
+	if (error == -1)
+	{
+		free_list(head);
+		exit (EXIT_FAILURE);
+	}
 }
 
 /**
@@ -53,20 +61,27 @@ void handle_file(char *file_read)
  *
 */
 
-void choose_func(char *command, char *arg, int line, int is_stack, FILE *fp)
+int choose_func(char *command, char *arg, int line, int is_stack, FILE *fp)
 {
 	if (strcmp(command, "push") == 0 && is_stack == 1)
-		add_stack_node(arg, line);
+		add_stack_node(arg, line, fp);
 	else if (strcmp(command, "push") == 0 && is_stack == 0)
-		add_queue_node(arg, line);
+		add_queue_node(arg, line, fp);
 	else if (strcmp(command, "pall") == 0)
-		print_nodes();
+		print_nodes(fp);
 	else
 	{
-		fclose(fp);
-		free_list(head);
+		/*fclose(fp);*/
+		/*
+		if (head != NULL)
+		{
+			free_list(head);
+			head = NULL;
+		}
+		*/
 		fprintf(stderr, "L %d:  unknown instruction %s\n", line, command);
-		exit (EXIT_FAILURE);
+		return (-1);
 	}
+	return (0);
 }
 

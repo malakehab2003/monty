@@ -12,7 +12,7 @@ int is_int(const char *string);
  * @line: the line which execute
 */
 
-void add_stack_node(char *arg, int line)
+void add_stack_node(char *arg, int line, FILE *fp)
 {
 	stack_t *new;
 	int check_int, arg_int;
@@ -20,6 +20,7 @@ void add_stack_node(char *arg, int line)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
+		fclose(fp);
 		free_list(head);
 		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
@@ -28,6 +29,7 @@ void add_stack_node(char *arg, int line)
 	if (arg == NULL && check_int == 0)
 	{
 		free (new);
+		fclose(fp);
 		free_list(head);
 		fprintf(stderr, "L %d: usage: push integer\n", line);
 		exit(EXIT_FAILURE);

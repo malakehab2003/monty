@@ -10,7 +10,8 @@
  * @line: the line of the node
 */
 
-void add_queue_node(char *arg, int line)
+void add_queue_node(char *arg, int line, FILE *fp)
 {
+	fclose(fp);
 	printf("%s, %d", arg, line);
 }
