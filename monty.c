@@ -18,12 +18,12 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		perror("USAGE: monty file\n");
-		exit (EXIT_FAILURE);
+		fprintf(stderr, "USAGE: monty file\n");
+		exit (-1);
 	}
 	handle_file(argv[1]);
 	free_list(head);
-	return (0);
+	return (EXIT_FAILURE);
 }
 
 
