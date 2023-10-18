@@ -6,14 +6,13 @@
  * Return: void
 */
 
-void print_nodes(FILE *fp)
+int print_nodes(void)
 {
 	stack_t *new;
 
 	if (head == NULL)
 	{
-		fclose(fp);
-		exit(EXIT_FAILURE);
+		return (-1);
 	}
 	new = head;
 	while (new != NULL)
@@ -21,4 +20,5 @@ void print_nodes(FILE *fp)
 		printf("%d\n", new->n);
 		new = new->next;
 	}
+	return (0);
 }

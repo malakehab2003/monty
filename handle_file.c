@@ -64,21 +64,13 @@ void handle_file(char *file_read)
 int choose_func(char *command, char *arg, int line, int is_stack, FILE *fp)
 {
 	if (strcmp(command, "push") == 0 && is_stack == 1)
-		add_stack_node(arg, line, fp);
+		return (add_stack_node(arg, line));
 	else if (strcmp(command, "push") == 0 && is_stack == 0)
 		add_queue_node(arg, line, fp);
 	else if (strcmp(command, "pall") == 0)
-		print_nodes(fp);
+		return (print_nodes());
 	else
 	{
-		/*fclose(fp);*/
-		/*
-		if (head != NULL)
-		{
-			free_list(head);
-			head = NULL;
-		}
-		*/
 		fprintf(stderr, "L %d:  unknown instruction %s\n", line, command);
 		return (-1);
 	}
