@@ -26,13 +26,13 @@ void handle_file(char *file_read)
         for (line = 1; getline(&buffer, &size, fp) != -1; line++)
         {
 		command = strtok(buffer, " \n");
-		if (strcmp(command, "queue") == 0)
+		if (command  == NULL || strcmp(command, "stack") == 0)
+                        continue;
+		else if (strcmp(command, "queue") == 0)
 		{
 			is_stack = 0;
 			continue;
 		}
-		else if (strcmp(command, "stack") == 0)
-			continue;
 		arg = strtok(NULL, " \n");
 		error = choose_func(command, arg, line, is_stack);
 		if (error == -1)
