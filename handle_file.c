@@ -22,7 +22,7 @@ void handle_file(char *file_read)
 		file_error(file_read);
 	for (line = 1; getline(&buffer, &size, fp) != -1; line++)
 	{
-		if (buffer == NULL || command == NULL)
+		if (buffer == NULL)
 		{
 			continue;
 		}
