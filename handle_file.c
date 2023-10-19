@@ -81,6 +81,13 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 	return (-1);
 }
 
+/**
+ * file_error - print the file error
+ *
+ * Return: void
+ *
+ * @file_read: the file to read
+*/
 
 void file_error(char *file_read)
 {
