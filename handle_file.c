@@ -24,12 +24,11 @@ void handle_file(char *file_read)
 	{
 		if (buffer == NULL)
 		{
-			/*fprintf(stderr, "Error: malloc failed\n");*/
 			error = -1;
 			break;
 		}
 		command = strtok(buffer, " \n");
-		if (command  == NULL || strcmp(command, "stack") == 0)
+		if (command  == NULL || strcmp(command, "stack") == 0 || buffer[0] == '#')
 			continue;
 		else if (strcmp(command, "queue") == 0)
 		{
