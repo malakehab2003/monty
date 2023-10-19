@@ -12,7 +12,7 @@ int rotate_last(void)
 
 	if (head == NULL)
 		return (0);
-	if(head->next == NULL)
+	if (head->next == NULL)
 		return (0);
 
 	last = head;
