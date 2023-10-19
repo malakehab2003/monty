@@ -16,7 +16,7 @@ int rotate_list(void)
 	first = head;
 	while (last->next != NULL)
 		last = last->next;
-	if (head->next = NULL)
+	if (head->next == NULL)
 		return (0);
 	head = head->next;
 	first->next = NULL;
