@@ -27,15 +27,8 @@ void handle_file(char *file_read)
 			error = -1;
 			break;
 		}
-		buffer = strtok(buffer, "\n");
-		if (is_all_spc(buffer) == 1)
-                        continue;
-		command = strtok(buffer, " ");
-		if (is_all_spc(command) == 1)
-			continue;
-		if (command == NULL)
-			continue;
-		if (command[0] == '#')
+		command = strtok(buffer, " \n");
+		if (command == NULL || command[0] == '#')
 			continue;
 		if (strcmp(command, "stack") == 0)
 		{
