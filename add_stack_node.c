@@ -14,13 +14,13 @@ int is_int(const char *string);
 
 int add_stack_node(char *arg, int line)
 {
-	stack_t *new;
+stack_t *new;
 	int check_int, arg_int;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		/*fprintf(stderr, "Error: malloc failed");*/
+		fprintf(stderr, "Error: malloc failed");
 		return (-1);
 	}
 	check_int = is_int(arg);

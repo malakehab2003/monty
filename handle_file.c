@@ -1,5 +1,7 @@
 #include "monty.h"
 
+void file_error(char *file_read);
+
 /**
  * handle_file - open and read the file
  *
@@ -17,17 +19,13 @@ void handle_file(char *file_read)
 
 	fp = fopen(file_read, "r");
 	if (fp == NULL || file_read == NULL)
-	{
-		if (head != NULL)
-			free_list(head);
-		fprintf(stderr, "Error: Can't open file %s\n", file_read);
-		exit(EXIT_FAILURE);
-	}
+		file_error(file_read);
 	for (line = 1; getline(&buffer, &size, fp) != -1; line++)
 	{
 		if (buffer == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
+			error = -1;
 			break;
 		}
 		command = strtok(buffer, " \n");
@@ -83,3 +81,11 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 	return (-1);
 }
 
+
+void file_error(char *file_read)
+{
+	if (head != NULL)
+		free_list(head);
+	fprintf(stderr, "Error: Can't open file %s\n", file_read);
+	exit(EXIT_FAILURE);
+}
