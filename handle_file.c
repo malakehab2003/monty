@@ -1,7 +1,7 @@
 #include "monty.h"
 
 void file_error(char *file_read);
-
+int is_all_spc(char *input);
 /**
  * handle_file - open and read the file
  *
@@ -15,7 +15,7 @@ void handle_file(char *file_read)
 	FILE *fp;
 	char *buffer = NULL, *command, *arg;
 	size_t size = 0;
-	int line, is_stack = 1, error;
+	int line, is_stack = 1, error = 0;
 
 	fp = fopen(file_read, "r");
 	if (fp == NULL || file_read == NULL)
@@ -27,8 +27,15 @@ void handle_file(char *file_read)
 			error = -1;
 			break;
 		}
-		command = strtok(buffer, " \n");
-		if (command == NULL || command[0] == '#')
+		buffer = strtok(buffer, "\n");
+		if (is_all_spc(buffer) == 1)
+                        continue;
+		command = strtok(buffer, " ");
+		if (is_all_spc(command) == 1)
+			continue;
+		if (command == NULL)
+			continue;
+		if (command[0] == '#')
 			continue;
 		if (strcmp(command, "stack") == 0)
 		{
@@ -121,4 +128,29 @@ void file_error(char *file_read)
 		free_list(head);
 	fprintf(stderr, "Error: Can't open file %s\n", file_read);
 	exit(EXIT_FAILURE);
+}
+
+/**
+ * is_all_spc - check if all the input are spaces
+ *
+ * Return: 1 if success
+ *
+ * @input: the input to check
+*/
+
+int is_all_spc(char *input)
+{
+
+	int i = 0;
+
+	if (input == NULL)
+		return (1);
+	while (input[i] != '\0')
+	{
+		if (input[i] != ' ' &&  input[i] != '\n')
+			return (0);
+		i++;
+	}
+	return (1);
+
 }
