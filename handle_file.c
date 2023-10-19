@@ -92,6 +92,8 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 		return (mod_nodes(line));
 	else if (strcmp(command, "pchar") == 0)
 		return (print_char(line));
+	else if (strcmp(command, "pstr") == 0)
+		return (print_str());
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, command);
 	return (-1);
 }

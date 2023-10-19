@@ -56,4 +56,5 @@ int div_nodes(int line);
 int mul_nodes(int line);
 int mod_nodes(int line);
 int print_char(int line);
+int print_str(void);
 #endif
