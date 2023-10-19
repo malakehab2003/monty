@@ -28,13 +28,13 @@ void handle_file(char *file_read)
 			break;
 		}
 		command = strtok(buffer, " \n");
+		if (command == NULL || command[0] == '#')
+			continue;
 		if (strcmp(command, "stack") == 0)
 		{
 			is_stack = 1;
 			continue;
 		}
-		if (command == NULL || command[0] == '#')
-			continue;
 		else if (strcmp(command, "queue") == 0)
 		{
 			is_stack = 0;
