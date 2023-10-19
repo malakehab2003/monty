@@ -117,8 +117,8 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 
 void file_error(char *file_read)
 {
-	if (head != NULL)
-		free_list(head);
+	/*if (head != NULL)
+		free_list(head);*/
 	fprintf(stderr, "Error: Can't open file %s\n", file_read);
 	exit(EXIT_FAILURE);
 }
