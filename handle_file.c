@@ -24,7 +24,7 @@ void handle_file(char *file_read)
 	{
 		if (buffer == NULL)
 		{
-			fprintf(stderr, "Error: malloc failed\n");
+			/*fprintf(stderr, "Error: malloc failed\n");*/
 			error = -1;
 			break;
 		}
