@@ -22,15 +22,13 @@ void handle_file(char *file_read)
 		file_error(file_read);
 	for (line = 1; getline(&buffer, &size, fp) != -1; line++)
 	{
-		/*
-		if (buffer == NULL)
-		{
-			error = -1;
-			break;
-		}
-		*/
 		command = strtok(buffer, " \n");
-		if (command == NULL || command[0] == '#' || strcmp(command, "stack") == 0)
+		if (strcmp(command, "stack") == 0)
+		{
+			is_stack = 1;
+			continue;
+		}
+		if (command == NULL || command[0] == '#')
 			continue;
 		else if (strcmp(command, "queue") == 0)
 		{
