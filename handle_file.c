@@ -94,6 +94,8 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 		return (print_char(line));
 	else if (strcmp(command, "pstr") == 0)
 		return (print_str());
+	else if (strcmp(command, "rotl") == 0)
+		return (rotate_list());
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, command);
 	return (-1);
 }
