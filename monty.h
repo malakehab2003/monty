@@ -50,4 +50,5 @@ void free_list(stack_t *head);
 int print_head(int line);
 int pop_node(int line);
 int swap_nodes(int line);
+int add_nodes(int line);
 #endif
