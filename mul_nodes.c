@@ -15,7 +15,7 @@ int mul_nodes(int line)
 
 	if (head == NULL || head->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line);
 		return (-1);
 	}
 
