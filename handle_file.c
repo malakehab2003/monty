@@ -40,7 +40,6 @@ void handle_file(char *file_read)
 		}
 		arg = strtok(NULL, " \n");
 		error = choose_func(command, arg, line, is_stack);
-		printf("error = %d\n", error);
 		if (error == -1)
 			break;
 	}
