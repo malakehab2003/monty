@@ -87,6 +87,8 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 		return (sub_nodes(line));
 	else if (strcmp(command, "div") == 0)
 		return (div_nodes(line));
+	else if (strcmp(command, "mul") == 0)
+		return (mul_nodes(line));
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, command);
 	return (-1);
 }

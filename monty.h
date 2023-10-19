@@ -53,4 +53,5 @@ int swap_nodes(int line);
 int add_nodes(int line);
 int sub_nodes(int line);
 int div_nodes(int line);
+int mul_nodes(int line);
 #endif
