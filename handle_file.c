@@ -28,6 +28,12 @@ void handle_file(char *file_read)
 			break;
 		}
 		command = strtok(buffer, " \n");
+		if (command == NULL)
+		{
+			error = -1;
+			break;
+		}
+			
 		if (strcmp(command, "stack") == 0 || command[0] == '#')
 			continue;
 		else if (strcmp(command, "queue") == 0)
