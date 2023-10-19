@@ -12,7 +12,7 @@ int print_nodes(void)
 
 	if (head == NULL)
 	{
-		return (-1);
+		return (-0);
 	}
 	new = head;
 	while (new != NULL)
