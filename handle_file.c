@@ -24,8 +24,7 @@ void handle_file(char *file_read)
 	{
 		if (buffer == NULL)
 		{
-			fprintf(stderr, "Error: malloc failed\n");
-			error = -2;
+			error = -1;
 			break;
 		}
 		command = strtok(buffer, " \n");
@@ -46,11 +45,8 @@ void handle_file(char *file_read)
 		if (error == -1)
 			break;
 	}
-	if (error != -2)
-	{
-		free(buffer);
-		fclose(fp);
-	}
+	free(buffer);
+	fclose(fp);
 	if (error == -1)
 	{
 		free_list(head);
