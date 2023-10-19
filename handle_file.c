@@ -24,7 +24,8 @@ void handle_file(char *file_read)
 	{
 		if (buffer == NULL)
 		{
-			continue;
+			error = -1;
+			break;
 		}
 		command = strtok(buffer, " \n");
 		if (strcmp(command, "stack") == 0 || command[0] == '#')
