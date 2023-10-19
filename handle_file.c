@@ -85,6 +85,8 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 		return (0);
 	else if (strcmp(command, "sub") == 0)
 		return (sub_nodes(line));
+	else if (strcmp(command, "div") == 0)
+		return (div_nodes(line));
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, command);
 	return (-1);
 }
