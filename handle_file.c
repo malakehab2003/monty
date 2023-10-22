@@ -71,6 +71,11 @@ void handle_file(char *file_read)
 
 int choose_func(char *command, char *arg, int line, int is_stack)
 {
+	if (arg == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line);
+		return (-1);
+	}
 	if (strcmp(command, "push") == 0 && is_stack == 1)
 		return (add_stack_node(arg, line));
 	else if (strcmp(command, "push") == 0 && is_stack == 0)
