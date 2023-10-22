@@ -24,7 +24,7 @@ stack_t *new;
 		return (-1);
 	}
 	check_int = is_int(arg);
-	if (arg == NULL || check_int == 0)
+	if (check_int == 0)
 	{
 		free(new);
 		fprintf(stderr, "L%d: usage: push integer\n", line);
@@ -59,6 +59,8 @@ int is_int(const char *string)
 {
 	int i;
 
+	if (string == NULL)
+		return (0);
 	for (i = 0; string[i] != '\0'; i++)
 	{
 		if (string[i] == '-')
