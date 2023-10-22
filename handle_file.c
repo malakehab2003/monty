@@ -76,7 +76,7 @@ int choose_func(char *command, char *arg, int line, int is_stack)
 		fprintf(stderr, "L%d: usage: push integer\n", line);
 		return (-1);
 	}
-	if (strcmp(command, "push") == 0 && is_stack == 1)
+	else if (strcmp(command, "push") == 0 && is_stack == 1)
 		return (add_stack_node(arg, line));
 	else if (strcmp(command, "push") == 0 && is_stack == 0)
 		return (add_queue_node(arg, line));
